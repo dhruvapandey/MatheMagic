@@ -2,18 +2,19 @@ package com.example.dhrpande.mathemagic;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.MainThread;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.dhrpande.mathemagic.dummy.DummyContent;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 /**
  * A fragment representing a single magicTrick detail screen.
@@ -23,6 +24,7 @@ import com.example.dhrpande.mathemagic.dummy.DummyContent;
  */
 public class magicTrickDetailFragment extends Fragment {
 
+    private AdView mAdView;
     private static int present_state=0, future_state=0 ;
     TextView questionText;
     Button nextButton, previousButton;
@@ -63,11 +65,14 @@ public class magicTrickDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         View rootView = inflater.inflate(R.layout.fragment_magictrick_detail, container, false);
         questionText = (TextView) rootView.findViewById(R.id.questionText);
         nextButton = (Button) rootView.findViewById(R.id.nextButton);
         previousButton = (Button) rootView.findViewById(R.id.previousButton);
+
+        MobileAds.initialize(rootView.getContext(), "ca-app-pub-1361855967936104~6712801876");
+        mAdView = (AdView) rootView.findViewById(R.id.adView);
+
 
         // Show the dummy content as text in a TextView.
         if (mItem.id == "10") {
@@ -75,6 +80,9 @@ public class magicTrickDetailFragment extends Fragment {
             future_state=0;
 
             questionText.setText("There are many simple questions about numbers that no one has been able to answer");
+
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 
             nextButton.setOnClickListener(
                     new Button.OnClickListener() {
@@ -162,6 +170,9 @@ public class magicTrickDetailFragment extends Fragment {
             questionText.setText("Hi there..\n" +
                     "\nPress next for the magical ride");
 
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
             nextButton.setOnClickListener(
                     new Button.OnClickListener() {
                         public void onClick(View v) {
@@ -248,6 +259,9 @@ public class magicTrickDetailFragment extends Fragment {
             questionText.setText("Hey.. you are looking awesome today\n" +
                     "\nPress next to begin");
 
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
             nextButton.setOnClickListener(
                     new Button.OnClickListener() {
                         public void onClick(View v) {
@@ -332,6 +346,9 @@ public class magicTrickDetailFragment extends Fragment {
             future_state=0;
 
             questionText.setText("Hi.. Press Next to begin the magical journey");
+
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 
             nextButton.setOnClickListener(
                     new Button.OnClickListener() {
@@ -425,6 +442,9 @@ public class magicTrickDetailFragment extends Fragment {
             questionText.setText("Whats up buddy\n" +
                     "\nPress next lets have some fun");
 
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
             nextButton.setOnClickListener(
                     new Button.OnClickListener() {
                         public void onClick(View v) {
@@ -509,6 +529,9 @@ public class magicTrickDetailFragment extends Fragment {
             future_state=0;
 
             questionText.setText("Looking for some trick ? press Next ");
+
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 
             nextButton.setOnClickListener(
                     new Button.OnClickListener() {
@@ -595,6 +618,9 @@ public class magicTrickDetailFragment extends Fragment {
 
             questionText.setText("Hi wassup.. Press next lets begin");
 
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
             nextButton.setOnClickListener(
                     new Button.OnClickListener() {
                         public void onClick(View v) {
@@ -672,6 +698,9 @@ public class magicTrickDetailFragment extends Fragment {
 
             questionText.setText("Hey.. You got a really nice smile\n" +
                     "\nPress next to begin:");
+
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 
             nextButton.setOnClickListener(
                     new Button.OnClickListener() {
@@ -756,6 +785,9 @@ public class magicTrickDetailFragment extends Fragment {
 
             questionText.setText("Hi .. Wondering how i know you age\n" +
                     "\ntap next to find out");
+
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 
             nextButton.setOnClickListener(
                     new Button.OnClickListener() {
@@ -842,6 +874,9 @@ public class magicTrickDetailFragment extends Fragment {
             numberImage = getResources().getDrawable(R.drawable.colours);
 
             questionText.setText("Wow your mind is full of beautiful memories.\n\nPress next to begin");
+
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
 
 
             nextButton.setOnClickListener(
